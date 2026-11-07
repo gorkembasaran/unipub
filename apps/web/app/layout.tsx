@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { DemoBanner } from "./components/DemoBanner";
 import { I18nProvider } from "./i18n/I18nProvider";
 import { getRequestLocale, getSiteMetadata } from "./seo";
 import { ThemeProvider, themeInitScript } from "./theme/ThemeProvider";
@@ -21,7 +22,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <ThemeProvider>
-          <I18nProvider locale={locale}>{children}</I18nProvider>
+          <I18nProvider locale={locale}>
+            <DemoBanner />
+            {children}
+          </I18nProvider>
         </ThemeProvider>
       </body>
     </html>

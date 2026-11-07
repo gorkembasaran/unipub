@@ -10,6 +10,7 @@ import type {
   CatalogPublicationSyncResponse,
 } from "@/api/platforms/catalog";
 import { api } from "@/api";
+import { isDemoMode } from "../demoMode";
 import { getApiErrorMessage } from "../utils/apiErrors";
 import type { Author, Publication, TranslateFn } from "./authorPage.types";
 import { compact } from "./authorPageUtils";
@@ -42,7 +43,7 @@ type CacheEntry<T> = {
 
 type CachedCatalogPublicationBundle = {
   publications: Publication[];
-  syncResult: CatalogPublicationSyncResponse;
+  syncResult: CatalogPublicationSyncResponse | null;
 };
 
 const AUTHOR_PROFILE_TTL_MS = 30_000;
@@ -113,6 +114,12 @@ function getCatalogPublicationsCached(authorId: string) {
     catalogPublicationCache,
     catalogPublicationPending,
     async () => {
+      if (isDemoMode) {
+        // The demo API is read-only, so skip the provider sync.
+        const publications = await api.catalog.listPublications(authorId);
+        return { publications, syncResult: null };
+      }
+
       const syncResult = await api.discovery.syncAuthorPublications(
         authorId,
         25,

@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { api, clearStoredAuthToken, getStoredAuthToken, setStoredAuthToken } from "@/api";
 import type { AuthUser } from "@/api";
+import { isDemoMode } from "./demoMode";
 import { useI18n } from "./i18n/I18nProvider";
 import { useTheme } from "./theme/ThemeProvider";
 import type { CatalogStats } from "@/api/platforms/catalog";
@@ -369,7 +370,7 @@ export default function HomePage() {
                 </div>
               ) : null}
             </div>
-          ) : (
+          ) : isDemoMode ? null : (
             <>
               <button
                 type="button"
@@ -604,6 +605,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {isDemoMode ? null : (
       <section className="home-cta">
         <div className="home-cta-content">
           <h2>{t("home.cta.title")}</h2>
@@ -613,6 +615,7 @@ export default function HomePage() {
           </button>
         </div>
       </section>
+      )}
 
       {authModalOpen ? (
         <div className="auth-modal-backdrop" onClick={() => setAuthModalOpen(false)}>

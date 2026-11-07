@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { APP_GUARD } from '@nestjs/core';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
@@ -14,6 +15,7 @@ import { ActivityLogModule } from './activity-log/activity-log.module';
 import { AdminModule } from './admin/admin.module';
 import { MaintenanceModule } from './maintenance/maintenance.module';
 import { OpenalexModule } from './openalex/openalex.module';
+import { SourceAccessGuard } from './common/source-access.guard';
 
 @Module({
   imports: [
@@ -43,6 +45,6 @@ import { OpenalexModule } from './openalex/openalex.module';
     OpenalexModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, { provide: APP_GUARD, useClass: SourceAccessGuard }],
 })
 export class AppModule {}

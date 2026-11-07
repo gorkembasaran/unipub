@@ -8,6 +8,7 @@ import type {
 } from "@/api/platforms/catalog";
 import { AuthModal } from "../components/AuthModal";
 import { useAuthSession } from "../hooks/useAuthSession";
+import { isDemoMode } from "../demoMode";
 import { useI18n } from "../i18n/I18nProvider";
 import { useTheme } from "../theme/ThemeProvider";
 import { getApiErrorMessage } from "../utils/apiErrors";
@@ -132,7 +133,7 @@ function AuthorPageContent() {
   const showPublicationSkeleton = loading && Boolean(author);
   const resolvedAuthorId = author?._id?.trim() ?? authorId;
   const refreshRequestAvailable =
-    profileSource === "catalog" && Boolean(author?._id?.trim());
+    !isDemoMode && profileSource === "catalog" && Boolean(author?._id?.trim());
   const pdfEditorHref = useMemo(() => {
     const search = new URLSearchParams();
 
