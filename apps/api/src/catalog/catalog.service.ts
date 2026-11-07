@@ -39,6 +39,8 @@ type CreatePublicationInput = {
   journal?: string;
   publishedAt?: string;
   publishedYear?: number;
+  authors?: string[];
+  citationCount?: number;
   authorIds?: string[];
   sourceRecords?: Array<{
     platform: string;
@@ -1128,6 +1130,8 @@ export class CatalogService {
         journal: input.journal?.trim() || undefined,
         publishedAt: input.publishedAt ? new Date(input.publishedAt) : undefined,
         publishedYear: input.publishedYear,
+        authors: input.authors,
+        citationCount: input.citationCount,
       },
       $addToSet: {
         authorIds: { $each: parsedAuthorIds },
@@ -3602,6 +3606,9 @@ export class CatalogService {
     const normalized = platform?.trim().toLowerCase();
     if (normalized === 'clarivate_wos') {
       return 'Web Of Science';
+    }
+    if (normalized === 'openalex') {
+      return 'OpenAlex';
     }
     return platform ?? '';
   }

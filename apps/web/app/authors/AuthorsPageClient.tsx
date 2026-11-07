@@ -11,6 +11,7 @@ import LanguageSwitcher from "../components/LanguageSwitcher";
 import { useTheme } from "../theme/ThemeProvider";
 import { useDiscoveryFilters } from "../hooks/useDiscoveryFilters";
 import type { DiscoveryAuthorSearchFilters, DiscoveryAuthorsResponse } from "@/api/platforms/discovery";
+import { PLATFORM_LABELS } from "../author/authorPageUtils";
 import { getApiErrorMessage } from "../utils/apiErrors";
 
 type AuthorItem = DiscoveryAuthorsResponse["items"][number];
@@ -572,7 +573,8 @@ function getDetailLine(author: AuthorItem) {
 
   const platforms = author.sourceProfiles
     ?.map((profile) => profile.platform?.trim())
-    .filter((profile): profile is string => Boolean(profile));
+    .filter((profile): profile is string => Boolean(profile))
+    .map((platform) => PLATFORM_LABELS[platform] ?? platform);
 
   return compact(platforms ?? []).join(" • ");
 }

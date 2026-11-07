@@ -233,7 +233,12 @@ export class DiscoveryService {
       `discoverAuthors DB scan query="${query}" pool=${dbCandidates.length} ranked=${rankedDbCandidates.length} relevant=${relevantDbCandidates.length}`,
     );
 
-    if (relevantDbCandidates.length >= limit) {
+    // The public demo never calls providers: it only serves seeded catalog data.
+    const dbOnly = ['1', 'true', 'yes', 'on'].includes(
+      (process.env.DEMO_MODE ?? '').trim().toLowerCase(),
+    );
+
+    if (relevantDbCandidates.length >= limit || dbOnly) {
       const formattedDbCandidates = relevantDbCandidates.map((item) =>
         this.formatDiscoveryResponseCandidateOutput(item),
       );
