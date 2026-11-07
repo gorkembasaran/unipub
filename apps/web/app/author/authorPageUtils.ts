@@ -13,6 +13,7 @@ export const PLATFORM_LABELS: Record<string, string> = {
   scraper_pubmed: "PubMed",
   scraper_scopus: "Scopus",
   scopus_scraper: "Scopus",
+  openalex: "OpenAlex",
 };
 
 function normalizeTrdizinTitleSpacing(value: string) {

@@ -66,6 +66,20 @@ curl "http://localhost:3000/openalex/authors?q=Aziz%20Sancar&limit=3"
 curl "http://localhost:3000/openalex/authors/A5016678671/works?limit=20"
 ```
 
+## Demo data (seed)
+
+The public demo is read-only (`DEMO_MODE=true`) and serves a seeded catalog
+built from OpenAlex (CC0). The default seed is the Computer Engineering faculty
+of Alanya Alaaddin Keykubat University ([apps/api/seeds/alku-ce.json](apps/api/seeds/alku-ce.json)):
+researchers are listed by OpenAlex author id, and several ids can be merged into one person.
+
+```bash
+docker compose exec api node dist/scripts/seed-openalex.js --file=seeds/alku-ce.json
+# local dev: cd apps/api && npm run seed:openalex -- --file=seeds/alku-ce.json [--dry-run]
+```
+
+Re-running the seed is safe: authors and publications are upserted.
+
 ## Local development
 
 Requirements: Node.js 22, MongoDB 7 (or `docker compose up mongo`).

@@ -7,6 +7,7 @@ import type {
   SortOrder,
   TranslateFn,
 } from "../authorPage.types";
+import { isDemoMode } from "../../demoMode";
 import { PLATFORM_LABELS } from "../authorPageUtils";
 import { PublicationCard } from "./PublicationCard";
 
@@ -149,24 +150,28 @@ export function AuthorPublicationsSection({
                   })}
                 </span>
               </button>
-              <button
-                type="button"
-                className="pubs-sync-btn"
-                onClick={onRequestRefresh}
-                disabled={isRequestingRefresh || !refreshRequestAvailable}
-                title={
-                  refreshRequestAvailable
-                    ? undefined
-                    : t("author.publications.refresh_request_unavailable")
-                }
-              >
-                <RefreshCcw size={16} aria-hidden="true" />
-                <span>{refreshButtonLabel}</span>
-              </button>
-              <button type="button" className="pubs-export-btn" onClick={onExport}>
-                <FileDown size={16} aria-hidden="true" />
-                <span>{editorButtonLabel}</span>
-              </button>
+              {isDemoMode ? null : (
+                <>
+                  <button
+                    type="button"
+                    className="pubs-sync-btn"
+                    onClick={onRequestRefresh}
+                    disabled={isRequestingRefresh || !refreshRequestAvailable}
+                    title={
+                      refreshRequestAvailable
+                        ? undefined
+                        : t("author.publications.refresh_request_unavailable")
+                    }
+                  >
+                    <RefreshCcw size={16} aria-hidden="true" />
+                    <span>{refreshButtonLabel}</span>
+                  </button>
+                  <button type="button" className="pubs-export-btn" onClick={onExport}>
+                    <FileDown size={16} aria-hidden="true" />
+                    <span>{editorButtonLabel}</span>
+                  </button>
+                </>
+              )}
             </div>
           </div>
 

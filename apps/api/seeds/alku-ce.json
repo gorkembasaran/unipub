@@ -1,0 +1,20 @@
+{
+  "description": "Alanya Alaaddin Keykubat University, Computer Engineering faculty (staff list: https://muhendislik.alanya.edu.tr/personel/akademik-personel/). Publication data comes from OpenAlex (CC0).",
+  "institution": {
+    "name": "Alanya Alaaddin Keykubat Üniversitesi",
+    "openalexId": "I4387154021",
+    "city": "Antalya",
+    "country": "Türkiye"
+  },
+  "authors": [
+    { "name": "Alper Kürşat Uysal", "openalexIds": ["A5060591593"] },
+    { "name": "Özge Öztimur Karadağ", "openalexIds": ["A5060832254"] },
+    { "name": "Yılmaz Kemal Yüce", "openalexIds": ["A5004847113"] },
+    { "name": "İbrahim Rıza Hallaç", "openalexIds": ["A5012150004", "A5119198960"] },
+    { "name": "Kübra Uyar Pınar", "openalexIds": ["A5089814459"] },
+    { "name": "Alperen Aksoy", "openalexIds": ["A5064655613"] },
+    { "name": "Gürkan Çelik", "openalexIds": ["A5021577295"] },
+    { "name": "Kağan Öztürk", "openalexIds": ["A5047925659"] },
+    { "name": "Ali Çoban", "openalexIds": ["A5069172067"] }
+  ]
+}
