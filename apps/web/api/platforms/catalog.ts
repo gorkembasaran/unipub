@@ -57,6 +57,15 @@ export type CatalogPublication = {
   sourceRecords?: CatalogPublicationSourceRecord[];
 };
 
+export type CatalogAuthorSummary = {
+  _id: string;
+  fullName: string;
+  university: string | null;
+  city: string | null;
+  country: string | null;
+  publicationCount: number;
+};
+
 export type CatalogStats = {
   totalPublications: number;
   totalAuthors: number;
@@ -97,6 +106,11 @@ function mapPublicationDateFilter(dateFilter: CatalogPublicationDateFilter) {
 export const catalogApi = {
   getStats: () =>
     apiRequest<CatalogStats>("/catalog/stats", {
+      authToken: null,
+    }),
+  listAuthors: (limit = 50) =>
+    apiRequest<CatalogAuthorSummary[]>("/catalog/authors", {
+      query: { limit },
       authToken: null,
     }),
   getAuthor: (id: string) =>

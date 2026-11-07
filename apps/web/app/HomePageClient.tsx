@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { api, clearStoredAuthToken, getStoredAuthToken, setStoredAuthToken } from "@/api";
 import type { AuthUser } from "@/api";
+import { DemoResearchers } from "./components/DemoResearchers";
 import { isDemoMode } from "./demoMode";
 import { useI18n } from "./i18n/I18nProvider";
 import { useTheme } from "./theme/ThemeProvider";
@@ -588,6 +589,8 @@ export default function HomePage() {
           </article>
         ))}
       </section>
+
+      <DemoResearchers />
 
       <section className="home-features">
         <div className="home-section-head">

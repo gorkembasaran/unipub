@@ -139,5 +139,8 @@
   "author.auth_required.title": "Log in",
   "author.auth_required.export": "Log in with your account to continue to PDF export.",
   "author.auth_required.refresh_request": "Log in with your account to request a data refresh.",
-  "demo.banner": "Read-only demo with open data from OpenAlex and Crossref. Self-host Unipub to connect more sources."
+  "demo.banner": "Read-only demo with open data from OpenAlex and Crossref. Self-host Unipub to connect more sources.",
+  "home.researchers.title": "Researchers in this demo",
+  "home.researchers.subtitle": "Computer Engineering faculty of Alanya Alaaddin Keykubat University, with publications from OpenAlex.",
+  "home.researchers.publications": "{count} publications"
 }

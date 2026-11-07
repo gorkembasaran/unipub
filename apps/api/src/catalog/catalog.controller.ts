@@ -24,6 +24,15 @@ export class CatalogController {
     return this.catalogService.getCatalogStats();
   }
 
+  @Get('authors')
+  listAuthors(@Query('limit') limit?: string) {
+    const parsed = limit ? Number(limit) : 50;
+    const safeLimit = Number.isInteger(parsed)
+      ? Math.min(Math.max(parsed, 1), 200)
+      : 50;
+    return this.catalogService.listAuthors(safeLimit);
+  }
+
   @Post('authors')
   @UseGuards(JwtAuthGuard)
   createAuthor(

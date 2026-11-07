@@ -718,6 +718,42 @@ export class CatalogService {
     return seeds;
   }
 
+  // Lightweight public list for browsing the catalog (e.g. the demo home page).
+  async listAuthors(limit = 50) {
+    const authors = await this.authorModel
+      .find({}, { fullName: 1, university: 1, city: 1, country: 1 })
+      .sort({ fullName: 1 })
+      .limit(limit)
+      .lean()
+      .exec();
+
+    const counts = await this.publicationModel
+      .aggregate<{ _id: Types.ObjectId; count: number }>([
+        { $match: { authorIds: { $in: authors.map((author) => author._id) } } },
+        { $unwind: '$authorIds' },
+        { $group: { _id: '$authorIds', count: { $sum: 1 } } },
+      ])
+      .exec();
+    const countByAuthor = new Map(
+      counts.map((item) => [item._id.toString(), item.count]),
+    );
+
+    return authors
+      .map((author) => ({
+        _id: author._id.toString(),
+        fullName: author.fullName,
+        university: author.university ?? null,
+        city: author.city ?? null,
+        country: author.country ?? null,
+        publicationCount: countByAuthor.get(author._id.toString()) ?? 0,
+      }))
+      .sort(
+        (left, right) =>
+          right.publicationCount - left.publicationCount ||
+          left.fullName.localeCompare(right.fullName, 'tr'),
+      );
+  }
+
   async getCatalogStats() {
     this.logger.log('getCatalogStats started');
     const [totalPublications, totalAuthors, universities, countries] =
