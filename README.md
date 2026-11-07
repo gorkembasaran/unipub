@@ -1,5 +1,7 @@
 # Unipub
 
+[![CI](https://github.com/gorkembasaran/unipub/actions/workflows/ci.yml/badge.svg)](https://github.com/gorkembasaran/unipub/actions/workflows/ci.yml)
+
 **One publication profile per researcher, merged from many scholarly sources.**
 
 Researchers' publications are scattered across Web of Science, Scopus, TR Dizin,
