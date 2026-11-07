@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <linearGradient id="grad3" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#ef4444" />
+    </linearGradient>
+    <linearGradient id="mainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g transform="translate(100, 100)">
+    <path d="M -50 -60 L -50 10 Q -50 45 -15 45 L 15 45 Q 50 45 50 10 L 50 -60" stroke="url(#grad1)" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <g opacity="0.9">
+      <rect x="-35" y="-25" width="25" height="32" rx="2" fill="url(#grad2)" transform="rotate(-12 -22.5 -9)"/>
+      <line x1="-30" y1="-18" x2="-15" y2="-20" stroke="white" stroke-width="1.5" opacity="0.8" stroke-linecap="round"/>
+      <line x1="-31" y1="-12" x2="-16" y2="-14" stroke="white" stroke-width="1.5" opacity="0.8" stroke-linecap="round"/>
+      <line x1="-32" y1="-6" x2="-17" y2="-8" stroke="white" stroke-width="1.5" opacity="0.6" stroke-linecap="round"/>
+      
+      <rect x="-12" y="-30" width="25" height="35" rx="2" fill="url(#mainGrad)" filter="url(#glow)"/>
+      <line x1="-7" y1="-22" x2="8" y2="-22" stroke="white" stroke-width="1.5" opacity="0.9" stroke-linecap="round"/>
+      <line x1="-7" y1="-15" x2="8" y2="-15" stroke="white" stroke-width="1.5" opacity="0.9" stroke-linecap="round"/>
+      <line x1="-7" y1="-8" x2="4" y2="-8" stroke="white" stroke-width="1.5" opacity="0.7" stroke-linecap="round"/>
+      
+      <rect x="12" y="-23" width="25" height="30" rx="2" fill="url(#grad3)" transform="rotate(15 24.5 -8)"/>
+      <line x1="17" y1="-17" x2="32" y2="-14" stroke="white" stroke-width="1.5" opacity="0.8" stroke-linecap="round"/>
+      <line x1="16" y1="-11" x2="31" y2="-8" stroke="white" stroke-width="1.5" opacity="0.8" stroke-linecap="round"/>
+      <line x1="15" y1="-5" x2="28" y2="-2.5" stroke="white" stroke-width="1.5" opacity="0.6" stroke-linecap="round"/>
+    </g>
+
+    <circle cx="-40" cy="30" r="3" fill="url(#grad1)" opacity="0.7"/>
+    <circle cx="0" cy="35" r="3" fill="url(#mainGrad)" opacity="0.7"/>
+    <circle cx="40" cy="30" r="3" fill="url(#grad3)" opacity="0.7"/>
+    <line x1="-40" y1="30" x2="0" y2="35" stroke="url(#grad2)" stroke-width="1" opacity="0.3"/>
+    <line x1="0" y1="35" x2="40" y2="30" stroke="url(#grad2)" stroke-width="1" opacity="0.3"/>
+  </g>
+
+  <g>
+    <circle cx="100" cy="100" r="75" stroke="url(#mainGrad)" stroke-width="0.5" opacity="0.2" fill="none"/>
+    <circle cx="175" cy="100" r="4" fill="url(#grad2)" opacity="0.8"/>
+  </g>
+  
+</svg>
