@@ -139,5 +139,8 @@
   "author.auth_required.title": "Giriş yap",
   "author.auth_required.export": "PDF dışa aktarmaya devam etmek için hesabınızla giriş yapın.",
   "author.auth_required.refresh_request": "Veri yenileme isteği göndermek için hesabınızla giriş yapın.",
-  "demo.banner": "OpenAlex ve Crossref açık verileriyle çalışan salt okunur demo. Daha fazla kaynak için Unipub'u kendi sunucunda çalıştırabilirsin."
+  "demo.banner": "OpenAlex ve Crossref açık verileriyle çalışan salt okunur demo. Daha fazla kaynak için Unipub'u kendi sunucunda çalıştırabilirsin.",
+  "home.researchers.title": "Demodaki araştırmacılar",
+  "home.researchers.subtitle": "Alanya Alaaddin Keykubat Üniversitesi Bilgisayar Mühendisliği öğretim üyeleri; yayınlar OpenAlex'ten.",
+  "home.researchers.publications": "{count} yayın"
 }
